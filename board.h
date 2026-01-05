@@ -7,7 +7,7 @@
 #include "sunxi_sdhci.h"
 
 #define CONFIG_KERNEL_FILENAME "zImage"
-#define CONFIG_DTB_FILENAME	   "sun8i-t113-mangopi-dual.dtb"
+#define CONFIG_DTB_FILENAME	   "board.dtb"
 #ifndef CONFIG_INITRD_FILENAME
 #define CONFIG_INITRD_FILENAME ""
 #endif
@@ -33,13 +33,13 @@
 #define CONFIG_MAIL_KERNEL_ADDR_ADDR   (CONFIG_FEL_MAILBOX_BASE + 0xCU)
 
 #define CONFIG_CONF_FILENAME	"boot.cfg"
-#define CONFIG_DEFAULT_BOOT_CMD "console=ttyS3,115200 earlycon"
+#define CONFIG_DEFAULT_BOOT_CMD "console=ttyS3,115200 earlycon mem=128M"
 #define CONFIG_BOOT_MAX_TRIES	2
 
 /* Boot source configuration flags (1 = enabled) */
 #define CONFIG_BOOT_SPINAND 0
-#define CONFIG_BOOT_SDCARD	0
-#define CONFIG_BOOT_MMC		1
+#define CONFIG_BOOT_SDCARD	1
+#define CONFIG_BOOT_MMC		0
 
 #define CONFIG_FATFS_CACHE_SIZE		 36 // (unit: 512B sectors, multiples of 8 to match FAT's 4KB)
 #define CONFIG_SDMMC_SPEED_TEST_SIZE 2048 // (unit: 512B sectors)
@@ -67,7 +67,7 @@ extern sdhci_t sdhci2;
 void board_init(void);
 void board_set_led(uint8_t num, uint8_t on);
 
-#define USART_DBG usart0_dbg
+#define USART_DBG usart3_dbg
 #define SDHCI sdhci0
 
 #endif
